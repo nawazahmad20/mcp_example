@@ -1,0 +1,14 @@
+services:
+  mcp-dice:
+    build: ./mcp_server
+    ports:
+      - "127.0.0.1:9000:8000"
+
+  crew-runner:
+    build: ./crew_runner
+    depends_on:
+      - mcp-dice
+    env_file:
+      - .env
+    environment:
+      MCP_URL: "http://mcp-dice:8000/mcp"
