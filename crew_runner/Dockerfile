@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the runner and helper modules
 COPY *.py .
 
-CMD ["python", "run_crewai_with_mcp.py"]
+CMD ["python", "-u", "run_crewai_with_mcp.py"]

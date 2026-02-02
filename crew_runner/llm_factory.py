@@ -29,7 +29,7 @@ def make_llm_from_env() -> LLM:
         model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
         if not api_key:
             raise ValueError("OPENAI_API_KEY not found. Please set it in your .env file")
-        print(f"[LLM] provider=openai model={model} key_loaded=True")
+        print(f"\n🤖 [LLM] provider=openai model={model} key_loaded=True\n")
         return LLM(model=f"openai/{model}", api_key=api_key)
 
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
@@ -37,7 +37,7 @@ def make_llm_from_env() -> LLM:
     model = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-5-20250929")
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY not found. Please set it in your .env file")
-    print(f"[LLM] provider=anthropic model={model} key_loaded=True")
+    print(f"\n🤖 [LLM] provider=anthropic model={model} key_loaded=True\n")
     return LLM(model=f"anthropic/{model}", api_key=api_key, base_url=base_url)
 
 

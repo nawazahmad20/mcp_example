@@ -23,7 +23,11 @@ def roll_dice(n: int = 1, sides: int = 6) -> dict:
         raise ValueError("sides must be between 2 and 1000")
     
     rolls = [random.randint(1, sides) for _ in range(n)]
-    return {"rolls": rolls, "total": sum(rolls)}
+    result = {"rolls": rolls, "total": sum(rolls)}
+    
+    print(f"\n\n🎲🎲 [MCP SERVER] roll_dice EXECUTED: n={n}, sides={sides}, result={result}\n", flush=True)
+    
+    return result
 
 @mcp.tool()
 def server_info() -> dict:
@@ -31,11 +35,15 @@ def server_info() -> dict:
     Get server information.
     Returns server name, version, and uptime in seconds.
     """
-    return {
+    result = {
         "name": "dice-service",
         "version": VERSION,
         "uptime_seconds": int(time.time() - START_TS),
     }
+    
+    print(f"\n\nℹ️  [MCP SERVER] server_info EXECUTED: {result}\n", flush=True)
+    
+    return result
 
 if __name__ == "__main__":
     # Choose ONE of the following `mcp.run(...)` lines:

@@ -8,7 +8,7 @@ def patch_crewai_mcp_tool_schemas(tools) -> None:
     CrewAI's MCPServerAdapter may generate args schemas that some LLM providers reject.
     This patches DynamicModel-derived schemas into proper Pydantic models.
     """
-    print("[PATCH] Fixing MCP tool schemas for LLM compatibility...")
+    print("🔧 [PATCH] Fixing MCP tool schemas for LLM compatibility...")
 
     for tool in tools:
         if not hasattr(tool, "args_schema"):
@@ -51,8 +51,10 @@ def patch_crewai_mcp_tool_schemas(tools) -> None:
             NewModel = create_model(model_name, **fields)
             tool.args_schema = NewModel
 
-            print(f"[PATCH] ✓ Fixed schema for tool: {tool.name}")
+            print(f"   ✓ Fixed schema for tool: {tool.name}")
         except Exception as e:
-            print(f"[PATCH] ⚠ Could not patch {tool.name}: {e}")
+            print(f"   ⚠ Could not patch {tool.name}: {e}")
+    
+    print()  # Add blank line after patching
 
 
