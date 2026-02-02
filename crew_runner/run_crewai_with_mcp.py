@@ -80,8 +80,10 @@ def main():
 
     except Exception as e:
         print(f"\n\n{'='*80}")
-        print(f"❌ [ERROR] Error connecting to or using MCP server: {e}")
-        print(f"❌ [ERROR] Ensure the MCP server is running and accessible at {MCP_URL}")
+        print(f"[ERROR] Error connecting to or "
+        f"using MCP server: {e}")
+        print(f"[ERROR] Ensure the MCP server is "
+        f"running and accessible at {MCP_URL}")
         print(f"{'='*80}\n")
         import traceback
         traceback.print_exc()
